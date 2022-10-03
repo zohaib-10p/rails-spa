@@ -1,0 +1,19 @@
+  <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+        <%= render partial: "articles/alert_message", locals: { :count => Article.count, :last_updated => Article.maximum(:updated_at) } %>
+        <%= turbo_frame_tag 'all_articles' do %>
+            <div class="row">
+                <div class="col-md-7 col-lg-7 col-xl-7">
+                
+                <% Article.all.each do |article| %>
+                   <%= render 'article', article: %>
+                  <% end %>
+                    <!-- Pager-->
+                    
+            </div>
+            <div class="col-md-5 col-lg-5 col-xl-5">
+            <%= render 'new', article: Article.new %>
+            </div>
+            <% end %>
+        </div>
+        </div>

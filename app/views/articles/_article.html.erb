@@ -1,0 +1,17 @@
+ <!-- Post preview-->
+                    <%= turbo_frame_tag dom_id(article) do %>
+                    <div class="post-preview">
+                            <h2 class="post-title"><%= article.title %></h2>
+                            <p><%= article.description %></p>
+                        <p class="post-meta">
+                            Posted by <%= article.author %> on <%= article.created_at %>
+                            <div class="btn-group">
+                            <%= link_to 'Edit', edit_article_path(article), { class: 'btn btn-primary m-1'} %>
+    
+                            <%= button_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger m-1' %>
+                            </div>
+                        </p>
+                    </div>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <% end %>
